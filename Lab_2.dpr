@@ -3,7 +3,7 @@ program Lab_2;
 {$APPTYPE CONSOLE}
 
 uses
-  SysUtils, Windows;
+  SysUtils;
 
 type
   pNode = ^node;
@@ -87,25 +87,22 @@ var
   numberEnt, choiceEnt: Integer;
 
 begin
-  SetConsoleCP(1251);
-  SetConsoleOutPutCP(1251);
-
   list := nil;
 
-  writeln('0 - Выход');
-  writeln('1 - Добавить абонента');
-  writeln('2 - Вывести весь список');
-  writeln('3 - Поиск по фамилии');
-  writeln('4 - Поиск по номеру телефона');
+  writeln('0 - Exit');
+  writeln('1 - Add new contact');
+  writeln('2 - Display all list');
+  writeln('3 - Search by last name');
+  writeln('4 - Search by phone number');
 
-  writeln('Выберите номер:');
+  writeln('Choose option:');
   readln(choiceEnt);
 
   while choiceEnt <> 0 do
     case choiceEnt of
       1:
         begin
-          writeln('Введите фамилию и номер телефона абонента:');
+          writeln('Enter the contact''s last name and phone number:');
           readln(fioEnt);
           readln(numberEnt);
           add(list, fioEnt, numberEnt);
@@ -113,25 +110,25 @@ begin
         end;
       2:
         begin
-          writeln('Весь список:');
+          writeln('Full list:');
           printList(list);
           readln(choiceEnt);
         end;
       3:
         begin
-          writeln('Введите фамилию для поиска:');
+          writeln('Enter the last name to search for:');
           readln(fioEnt);
           writeln;
-          writeln('Список:');
+          writeln('List:');
           printListByFIO(list, fioEnt);
           readln(choiceEnt);
         end;
       4:
         begin
-          writeln('Введите номер телефона для поиска:');
+          writeln('Enter the phone number to search for:');
           readln(numberEnt);
           writeln;
-          writeln('Список:');
+          writeln('List:');
           printListByNumber(list, numberEnt);
           readln(choiceEnt);
         end;
